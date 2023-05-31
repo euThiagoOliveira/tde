@@ -188,7 +188,7 @@ function VerificadordeCorrespondencias(arrayElements) {
         
         // verificando classes iguais  e diferentes
         if(itemAtual.classList.value  === proximo.classList.value ){
-          console.log(itemAtual.classList.value,proximo.classList.value )
+       
           acm++;
         }else if(itemAtual.classList.value  != proximo.classList.value) {
           acm = 0
