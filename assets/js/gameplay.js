@@ -93,7 +93,7 @@ function VerificarRegras(c){
   let linhaPossivel = (linha + 1 > 5 ? 5 : linha + 1) 
   let posicaoASerVerificada = rows[linhaPossivel].querySelectorAll('td')[coluna];
 
-  if(linha < 5 && posicaoASerVerificada.childNodes.length == 0){
+  if(linha <= 5 && posicaoASerVerificada.childNodes.length == 0){
     // Tá seguindo a regra 
     return false;
   }
