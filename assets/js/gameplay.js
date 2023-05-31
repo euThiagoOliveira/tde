@@ -173,32 +173,40 @@ function VerificarVertical(line, cell) {
   VerificadordeCorrespondencias(verticalArray);
 }
 function VerificadordeCorrespondencias(arrayElements) {
-  let analiseArray = arrayElements;
-  let correspondencia = 0;
 
-
-  for (i = 0; i <= analiseArray.length - 1; i++) {
-    let proximo = analiseArray[i + 1];
-    let atual = analiseArray[i].querySelector("span");
-
-    if (atual != null) {
-      if (proximo != undefined && proximo.children[0]) {
-        if (atual.className === proximo.children[0].className) {
-          correspondencia++;
+  let elementosdoArray = arrayElements;
+  let acm = 0;
+  for(i =0 ; i <= elementosdoArray.length -1 ; i ++){
+    let proximo = elementosdoArray[i + 1];
+    let itemAtual = elementosdoArray[i];
+ 
+    if(itemAtual.childNodes.length != 0 ){
+     
+      if(proximo != undefined  && proximo.childNodes.length > 0){
+        itemAtual = itemAtual.querySelector('span'); // verificando os elementos span no TD 
+        proximo =  proximo.querySelector('span'); // verificando os elementos span no TD 
+        
+        // verificando classes iguais  e diferentes
+        if(itemAtual.classList.value  === proximo.classList.value ){
+          console.log(itemAtual.classList.value,proximo.classList.value )
+          acm++;
+        }else if(itemAtual.classList.value  != proximo.classList.value) {
+          acm = 0
         }
-      }
+      
     }
+    if (acm == 3){
+      const vencedor = document.getElementById('vencedorModal')
+      var modal = new bootstrap.Modal(vencedor)
+      modal.show(vencedor)
+      break
+     }
+  
+   }
+  
+    }
+  return false;
   }
-  if (correspondencia == 3) {
-    const vencedor = document.getElementById('vencedorModal')
-    var modal = new bootstrap.Modal(vencedor)
-   modal.show(vencedor)
-    //console.log(playerAtual)
-  } else {
-    correspondencia = 0;
-  }
-
-}
 opcaoLimparTabela.addEventListener('click',function(){
   for (let i = 0; i < tds.length; i++ ){
     tds[i].innerHTML = "";
